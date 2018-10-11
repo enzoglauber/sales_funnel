@@ -1,6 +1,7 @@
 class StagesList extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       stages: []
     };
@@ -31,6 +32,7 @@ class StagesList extends React.Component {
     })
     return (
       <div className="container-fluid">
+        <AddButton />
         <div className="row">
           {stages}
         </div>
