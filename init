@@ -1,0 +1,25 @@
+CHANGE Dockerfile, docker-compose and database.yml
+chown -R $USER:$USER spec
+###################
+###################
+docker run --rm --user "$(id -u):$(id -g)" -v $(pwd):/usr/src -w /usr/src -ti ruby:2.5.1 bash
+gem install rails --version=5.2
+# -B= Para nao instalar as gems
+# -T= Para nao instalar os testes
+rails new . -B -T -d postgresql
+
+
+docker-compose up --build
+docker-compose run --rm app bundle install
+docker-compose run --rm app bundle exec rake db:create
+
+docker-compose run --rm app bundle exec rails g react:install
+
+
+docker-compose run --rm app bundle exec rails g controller Stage index create destroy update
+
+### MODELS 
+
+docker-compose run --rm app bundle exec rails g model Stage name
+docker-compose run --rm app bundle exec rails g model Opportunity title value:decimal{8,2} customer stage:references
+docker-compose run --rm app bundle exec rails g model StageHistory stage:references opportunity:references
