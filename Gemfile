@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
 gem "animate-rails"
 gem 'font-awesome-sass', '~> 5.3.1'
+gem 'rack-cors'
+gem 'rack-attack'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
