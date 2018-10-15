@@ -24,10 +24,9 @@ class Api::V1::StagesController < Api::V1::ApiController
   private
     def set_stage
       @stage = Stage.find(params[:id])
-      @opportunities = @stage.opportunities.all
     end
 
     def stage_params
-      params.require(:stage).permit(:id, :name)
+      params.require(:stage).permit(:name)
     end
 end
